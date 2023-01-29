@@ -1,0 +1,46 @@
+
+int n = Integer.parseInt(args[0]);
+        char Sexo_a_remover = args[1].charAt(0);
+        ArrayList<String> Curps = new ArrayList<String>();
+        for(int i=0; i<n; i++){
+            Curps.add(getCURP());
+        }
+        Iterator<String> itr = Curps.iterator();
+        System.out.println(Curps);
+        System.out.println("\n************************************\n");
+        while(itr.hasNext()){
+            String Aux = itr.next();
+            if(Aux.charAt(10)==Sexo_a_remover){
+                itr.remove();
+            }
+        }
+        System.out.println(Curps);
+
+
+
+
+///2
+int n = Integer.parseInt(args[0]);
+        
+        ArrayList<String> Curps = new ArrayList<String>();
+        Curps.add(getCURP());
+        Iterator<String> itr = Curps.iterator();
+        String Aux;
+        for(int i=0; i<n-1; i++){
+            int j=0;
+            int bandera=0;
+            Aux=getCURP();
+            System.out.println(Aux);
+            while(itr.hasNext()&&bandera==0){
+                if(Aux.compareTo(itr.next())<0){
+                    Curps.add(j,Aux);
+                    bandera=1;
+                }
+                j++;
+            }
+            if(!itr.hasNext()&&Curps.size()==i+1){
+                Curps.add(Aux);
+            }
+            itr=Curps.iterator();
+            System.out.println(Curps);
+        }

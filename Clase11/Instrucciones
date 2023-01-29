@@ -1,0 +1,28 @@
+[7/9/2022 8:36] Ukranio Coronilla ContrerasCLASE 11
+    
+
+Ejercicio 15
+
+Haciendo uso de la interfaz Runnable de Java explicada en:
+
+https://www.geeksforgeeks.org/runnable-interface-in-java/?ref=gcse
+
+Cree dos hilos que accedan a una variable compartida var_compartida de tipo int que inicialmente tiene un valor de cero.  Ambos hilos deben ejecutar un único método run() el cual se encargará de modificar la variable compartida. El método run() ejecutará en un ciclo de n veces (donde n se recibe en la línea de comandos) al método modifica() el cual se encarga de incrementar en uno o decrementar en uno a var_compartida según sea el caso. Si se trata del primer hilo que se creó deberá incrementar en uno la variable compartida, y si es el segundo hilo se deberá decrementar en uno la variable compartida. Para identificar de qué hilo se trata y pasar parámetros a los hilos léase:
+
+https://www.geeksforgeeks.org/how-to-get-the-id-of-a-current-running-thread-in-java/#:~:text=In%20the%20run()%20method,invoked%20the%20run()%20method
+
+Cuando ambos hilos hayan terminado de ejecutarse (véase el método join() para asegurarse que ambos hilos se han ejecutado por completo en https://www.geeksforgeeks.org/java-concurrency-yield-sleep-and-join-methods/?ref=lbp
+
+), la función principal deberá imprimir el valor de la variable compartida.
+
+Ejecute su programa varias veces incrementando n hasta poder visualizar las condiciones de competencia. Es importante no imprimir nada en el programa para que el calendarizador de hilos opere de manera concurrente.
+
+Ejercicio 16
+
+Podemos resolver la condición de competencia haciendo que el método modifica() se ejecute sólo por un hilo a la vez con synchronized quedando:
+
+public synchronized void modifica()
+
+Pruébela para verificar que ya no hay inconsistencias. 
+
+Runnable interface in Java - GeeksforGeeksA Computer Science portal for geeks. It contains well written, well thought and well explained computer science and programming articles, quizzes and practice/competitive programming/company interv...www.geeksforgeeks.org<https://teams.microsoft.com/l/message/19:10mVVoeOssCBuEYVO04A3AL70bq_a7yL2pashVIU-SQ1@thread.tacv2/1662557769621?tenantId=f94bf4d9-8097-4794-adf6-a5466ca28563&amp;groupId=a9d5538a-e6d9-4a47-b71c-614f5173ea31&amp;parentMessageId=1662557769621&amp;teamName=DSD 2022-2 GRUPO 4CM12&amp;channelName=General&amp;createdTime=1662557769621&amp;allowXTenantAccess=false>

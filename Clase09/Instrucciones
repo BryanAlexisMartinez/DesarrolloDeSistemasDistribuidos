@@ -1,0 +1,33 @@
+
+El Framework Collection
+
+Un Framework es un conjunto de clases, clases abstractas e interfaces; las cuales proveen una arquitectura lista para usarse en un área de programación. Java incorpora el Framework Collection para manejar una colección de objetos. Cualquier grupo de objetos individuales que se representa como una unidad se conoce como una colección de objetos.
+
+Como se muestra en la figura el Framework Collection posee una interfaz Collection y esta hereda a la interfaz List.
+
+En Java una interfaz puede heredar a otra y además se permite la herencia múltiple de interfaces. En este caso no se usa implements porque la interfaz List no implementa nada, sólo se hacen extensivas las propiedades de la interfaz Collection. 
+
+La interfaz List brinda métodos para administrar una colección ordenada de objetos mediante una lista.
+
+
+
+También es posible observar en:
+
+https://docs.oracle.com/javase/8/docs/api/java/util/List.html
+
+que la interfaz List hereda de la interfaz Iterable la cual permite iterar a través de la colección de objetos.
+
+Por último, vemos que la clase ArrayList implementa la interfaz List y permite manejar arreglos dinámicos en Java.
+
+ Ejercicio 11
+
+Retome la solución del ejercicio 8 en la clase 6 y modifíquelo para que la clase PoligonoIrreg almacene los vértices en un objeto ArrayList (véase https://www.geeksforgeeks.org/list-interface-java-examples/?ref=gcse ). Asimismo, dentro del método toString haga uso de un bucle for-each para imprimir los elementos de ArrayList.
+
+Ejercicio 12
+
+Incluya en la clase PoligonoIrreg el método ordenaVertices para ordenar los vértices de menor a mayor en función de su magnitud (distancia de la coordenada al origen) con ayuda de la interfaz Comparator (véase https://www.geeksforgeeks.org/comparator-interface-java/?ref=gcse ). Se recomienda agregar al objeto coordenada un nuevo miembro magnitud para facilitar el ordenamiento.
+
+En el método principal instancie un objeto PoligonoIrreg al cual posea 10 vértices, todos ellos con valores reales aleatorios tanto positivos como negativos comprendidos entre -100.000 y 100.000 Imprima los vértices del polígono, mande a llamar el método de ordenamiento y posteriormente vuelva a imprimir los vértices del polígono. Es importante que los valores en las coordenadas tengan al menos tres dígitos decimales aleatorios.
+
+
+<https://teams.microsoft.com/l/message/19:10mVVoeOssCBuEYVO04A3AL70bq_a7yL2pashVIU-SQ1@thread.tacv2/1662039312782?tenantId=f94bf4d9-8097-4794-adf6-a5466ca28563&amp;groupId=a9d5538a-e6d9-4a47-b71c-614f5173ea31&amp;parentMessageId=1662039312782&amp;teamName=DSD 2022-2 GRUPO 4CM12&amp;channelName=General&amp;createdTime=1662039312782&amp;allowXTenantAccess=false>

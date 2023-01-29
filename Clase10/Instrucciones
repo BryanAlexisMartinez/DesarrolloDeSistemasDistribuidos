@@ -1,0 +1,121 @@
+En el siguiente caso tenemos un ejemplo de clase externa y una clase interna:
+
+public class ClaseExterna
+
+{
+
+private static class ClaseInterna
+
+{
+
+…
+
+Un objeto de la clase interna no tiene conexión con un objeto de la clase externa a menos que la variable o método de la clase externa sean static. Esto se muestra en el siguiente programa que permite generar una CURP aleatoria:
+
+Main.java
+
+class Main
+
+{
+
+    public static void main(String[] args)
+
+    {                   
+
+        System.out.println("CURP = " + getCURP());
+
+    }
+
+ 
+
+    // Función para generar una CURP aleatoria
+
+    static String getCURP()
+
+    {
+
+        String Letra = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        String Numero = "0123456789";
+
+        String Sexo = "HM";
+
+        String Entidad[] = {"AS", "BC", "BS", "CC", "CS", "CH", "CL", "CM", "DF", "DG", "GT", "GR", "HG", "JC", "MC", "MN", "MS", "NT", "NL", "OC", "PL", "QT", "QR", "SP", "SL", "SR", "TC", "TL", "TS", "VZ", "YN", "ZS"};
+
+        int indice;
+
+        
+
+        StringBuilder sb = new StringBuilder(18);
+
+        
+
+        for (int i = 1; i < 5; i++) {
+
+            indice = (int) (Letra.length()* Math.random());
+
+            sb.append(Letra.charAt(indice));        
+
+        }
+
+        
+
+        for (int i = 5; i < 11; i++) {
+
+            indice = (int) (Numero.length()* Math.random());
+
+            sb.append(Numero.charAt(indice));        
+
+        }
+
+ 
+
+        indice = (int) (Sexo.length()* Math.random());
+
+        sb.append(Sexo.charAt(indice));        
+
+        
+
+        sb.append(Entidad[(int)(Math.random()*32)]);
+
+ 
+
+        for (int i = 14; i < 17; i++) {
+
+            indice = (int) (Letra.length()* Math.random());
+
+            sb.append(Letra.charAt(indice));        
+
+        }
+
+ 
+
+        for (int i = 17; i < 19; i++) {
+
+            indice = (int) (Numero.length()* Math.random());
+
+            sb.append(Numero.charAt(indice));        
+
+        }
+
+        
+
+        return sb.toString();
+
+    }           
+
+}
+
+Donde la CURP tiene el siguiente formato:
+
+    
+
+Ejercicio 13
+
+Después de leer en la siguiente página ( https://www.geeksforgeeks.org/iterators-in-java/ ) el subtema correspondiente al cursor Iterator de Java, elabore un programa que almacene n CURPs en un ArrayList e imprima todos sus elementos. Posteriormente debe usar al cursor Iterator para eliminar de la lista a todas las CURPs cuyo sexo sea masculino o femenino, según se especifique por el usuario, e imprima al final el arreglo filtrado. Tanto el numero n como el sexo se deben especificar como parámetros del programa.
+
+ Ejercicio 14
+
+Usando el cursor Iterator elabore un programa que vaya generando CURPs y las vaya imprimiendo y almacenando en un ArrayList en orden ascendente respecto a los primeros cuatro caracteres alfabéticos. Cada que se genera una nueva CURP se debe insertar en el lugar correspondiente de la lista, sin necesidad de usar algún método de ordenamiento. Al igual que el ejercicio anterior, el número de CURPs se debe introducir en la línea de comandos.
+
+Sugerencia: Usar el método compareTo de la clase String para determinar el orden de las CURP.

@@ -1,0 +1,11 @@
+Ejercicio 1
+
+Después de leer el subtema HashMap sobre la interfaz Map en Java disponible en:
+
+https://www.geeksforgeeks.org/map-interface-java-examples/?ref=gcse
+
+Lea con su programa el archivo de texto "El_viejo_y_el_mar.txt" (véase https://www.geeksforgeeks.org/different-ways-reading-text-file-java/?ref=gcse) disponible en la pestaña “Archivos”, y utilice un Map para almacenar cada uno de los caracteres distintos junto con su número total de apariciones en el texto. Imprima al final el numero de caracteres distintos encontrados y el Map para visualizar los caracteres distintos encontrados en el texto y sus respectivas ocurrencias. 
+
+Ejercicio 2
+
+Utilice un ArrayList y la interfaz Comparator para imprimir los caracteres junto con su número de ocurrencias ordenadas de mayor ocurrencia a menor ocurrencia.

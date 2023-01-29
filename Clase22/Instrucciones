@@ -1,0 +1,29 @@
+En esta clase vamos a crear un cliente HTTP síncrono( https://es.wikipedia.org/wiki/Comunicaci%C3%B3n_sincr%C3%B3nica) en lenguaje Java para acceder al servidor HTTP programado en la clase anterior.
+
+Reutilice el código del cliente HTTP en la sección “1. Synchronous Example” disponible en:
+
+https://mkyong.com/java/java-11-httpclient-examples/
+
+Ejercicio 1
+
+Apoyado en la documentación sobre la clase HttpClient que se encuentra en:
+
+https://docs.oracle.com/en/java/javase/12/docs/api/java.net.http/java/net/http/HttpClient.html
+
+modifique el código para que el cliente HTTP obtenga el estado del servidor, es decir acceda al endpoint status.
+
+Enviar código y captura de pantalla mostrando la ejecución de su código y realizando lo que se solicita.
+
+Ejercicio 2
+
+Utilice también la información disponible en:
+
+https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpRequest.BodyPublishers.html
+
+para solicitar al servidor una búsqueda de la cadena “IPN” en 17576000 tokens, obteniendo también el tiempo que tardó el servidor en procesar la solicitud.
+
+Enviar código y captura de pantalla mostrando la ejecución de su código y realizando lo que se solicita.
+
+Ejercicio 3
+
+Modifique el ejercicio 2 para que dentro del programa se envíen tres solicitudes de manera secuencial (una después de otra) de la cadena “IPN” en 17576000 tokens. Cada solicitud se debe dirigir hacia cada uno de los tres servidores ubicados en cada una de las LAPs de su equipo. Debido a que los Access point de ESCOM filtran puertos, tendrá que utilizar su dispositivo celular para que se puedan comunicar las computadoras como se muestra en la imagen:

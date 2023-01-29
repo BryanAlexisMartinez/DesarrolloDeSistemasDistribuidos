@@ -1,0 +1,207 @@
+7.- Es posible que un objeto sea miembro de una clase, a esto se le conoce como composición. Sobre la composición se puede decir que:
+
+“Dado que la herencia es tan importante en la POO, casi siempre se enfatiza mucho su uso, de manera que los programadores novatos pueden llegar a pensar que hay que emplearla en todas partes. Esto puede dar lugar a que se hagan diseños demasiados complejos y complicados. En lugar de esto, en primer lugar, cuando se van a crear nuevas clases debe considerarse la composición, ya que es más simple y flexible. “
+
+Bruce Eckel - “Thinking in Java”
+
+Considere el siguiente programa que hace uso de la composición:
+
+Coordenada.java
+
+public class Coordenada {
+
+    private double x, y;
+
+    public Coordenada(double x, double y) {
+
+        this.x = x;
+
+        this.y = y;
+
+    }
+
+    //Metodo getter de x
+
+    public double abcisa( ) { return x; }
+
+ 
+
+    //Metodo getter de y
+
+    public double ordenada( ) { return y; }
+
+    
+
+    //Sobreescritura del método de la superclase objeto para imprimir con System.out.println( )
+
+    @Override
+
+    public String toString( ) {
+
+        return "[" + x + "," + y + "]";
+
+    }
+
+}
+
+Rectangulo.java
+
+public class Rectangulo {
+
+    private Coordenada superiorIzq, inferiorDer;
+
+    
+
+    public Rectangulo(){
+
+        superiorIzq = new Coordenada(0,0);
+
+        inferiorDer = new Coordenada(0,0);
+
+    }
+
+    
+
+    public Rectangulo(double xSupIzq, double ySupIzq, double xInfDer, double yInfDer){
+
+        superiorIzq = new Coordenada(xSupIzq, ySupIzq);
+
+        inferiorDer = new Coordenada(xInfDer, yInfDer);        
+
+    }
+
+    
+
+    //Metodo getter de la coordenada superior izquierda
+
+    public Coordenada superiorIzquierda( ) { return superiorIzq; }
+
+ 
+
+    //Metodo getter de la coordenada inferior derecha
+
+    public Coordenada inferiorDerecha( ) { return inferiorDer; }
+
+    
+
+    //Sobreescritura del método de la superclase objeto para imprimir con System.out.println( )
+
+    @Override
+
+    public String toString( ) {
+
+        return "Esquina superior izquierda: " + superiorIzq + "\tEsquina superior derecha:" + inferiorDer + "\n";
+
+    }
+
+}
+
+PruebaRectangulo.java
+
+public class PruebaRectangulo {
+
+    public static void main (String[] args) {
+
+        
+
+        Rectangulo rect1 = new Rectangulo(2,3,5,1);
+
+        double ancho, alto;
+
+        
+
+        System.out.println("Calculando el área de un rectángulo dadas sus coordenadas en un plano cartesiano:");
+
+        System.out.println(rect1);
+
+        alto = rect1.superiorIzquierda().ordenada() - rect1.inferiorDerecha().ordenada();
+
+        ancho = rect1.inferiorDerecha().abcisa() - rect1.superiorIzquierda().abcisa();
+
+        System.out.println("El área del rectángulo es = " + ancho*alto);
+
+    }
+
+}
+
+Para automatizar la compilación del código anterior debe crear un archivo (en la misma carpeta donde están los tres archivos de código) en modo texto de nombre Makefile el cual contendrá sólo lo siguiente (algunas líneas llevan un TAB al inicio, no son espacios en blanco):
+
+JFLAGS = -g
+
+JC = javac
+
+ 
+
+.SUFFIXES: .java .class
+
+ 
+
+.java.class:
+
+       $(JC) $(JFLAGS) $*.java
+
+ 
+
+CLASSES = \
+
+               PruebaRectangulo.java \
+
+               Rectangulo.java \
+
+               Coordenada.java \
+
+ 
+
+default: classes
+
+ 
+
+classes: $(CLASSES:.java=.class)
+
+ 
+
+clean:
+
+       $(RM) *.class
+
+       
+
+run:
+
+       java PruebaRectangulo
+
+ 
+
+Ya elaborado el archivo Makefile, sólo es necesario ejecutar en la línea de comandos el comando:
+
+make
+
+Y se habrán compilado todos los archivos. Si se desea limpiar todos los archivos class, se ejecuta:
+
+make clean
+
+Y para ejecutar el programa:
+
+make run
+
+Después de comprender y ejecutar el código, agregue otro constructor para que se pueda crear un objeto Rectangulo con la siguiente línea de código:
+
+        Rectangulo rect1 = new Rectangulo(c1, c2);
+
+Donde c1 y c2 son dos objetos Coordenada.
+
+8.- Basándose en el código anterior, elabore la clase PoligonoIrreg la cual representa un polígono irregular en los cuatro cuadrantes del plano cartesiano, cuyos vértices se componen de un arreglo simple de n objetos Coordenada: 
+
+private Coordenada[] vertices;
+
+Se debe disponer de los métodos anadeVertice para añadir un vértice al polígono, es decir un objeto Coordenada, y sobrescribir el método toString( ) para imprimir el conjunto de vértices que componen al polígono.
+[25/8/2022 8:34] Ukranio Coronilla Contreras
+    
+
+9.- Retome el ejercicio anterior para medir cuanto tiempo tarda la creación de un objeto PoligonoIrreg con diez millones de vértices. Los vértices se agregan en un ciclo que crea objetos Coordenada mediante New y asignando en cada objeto coordenadas aleatorias.
+
+Posteriormente modifíquelo y en lugar de utilizar New, utilice un mutador set (setter) para inicializar los valores de los objetos Coordenada. 
+
+¿Cuál de los dos es más eficiente? ¿Cuántas veces más tarda uno que el otro? ¿Por qué se da esta diferencia? 
+
+<https://teams.microsoft.com/l/message/19:10mVVoeOssCBuEYVO04A3AL70bq_a7yL2pashVIU-SQ1@thread.tacv2/1661434461907?tenantId=f94bf4d9-8097-4794-adf6-a5466ca28563&amp;groupId=a9d5538a-e6d9-4a47-b71c-614f5173ea31&amp;parentMessageId=1661434396316&amp;teamName=DSD 2022-2 GRUPO 4CM12&amp;channelName=General&amp;createdTime=1661434461907&amp;allowXTenantAccess=false>

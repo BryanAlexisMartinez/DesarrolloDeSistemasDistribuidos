@@ -1,0 +1,18 @@
+5.- El programa consiste en generar n “palabras” de tres letras mayúsculas aleatorias e irlas concatenando en una cadena gigante, manteniendo un espacio en blanco de separación entre cada palabra. Posteriormente debe hacerse la búsqueda de la subcadena “IPN” en la cadena gigante y contabilizar el número de apariciones, así como la posición dentro de la cadenota donde apareció.
+
+El programa debe recibir el número n como parámetro en la línea de comandos de manera que debe incluir al inicio algo como:
+
+n = Integer.parseInt(args[0]);
+
+Por cuestiones de desempeño la cadena deberá almacenarse en un arreglo de tipo byte:
+
+char[] cadenota = new char[n*4];  
+
+¿De acuerdo con la teoría de la probabilidad cuantas palabras deberían generarse para que se dé una ocurrencia? ¿Y para diez ocurrencias? 
+
+Favor de responder las preguntas y ejecutar ambos con el número de tokens para que ocurran aproximadamente 10 ocurrencias de "IPN" en la misma computadora para que tenga validez. Solo imprima el número de veces que encontró la palabra "IPN".
+6.- Elabore un programa similar al anterior, pero utilizando la clase StringBuilder y el método append para almacenar la cadena grande, así como el método indexOf para buscar la subcadena “IPN”. Posteriormente y haciendo uso del método System.nanoTime() compare los tiempos de ejecución del ejercicio anterior con el actual haciendo las búsquedas en una cadena suficientemente grande donde al menos en uno de los dos casos el tiempo sea aproximadamente de un segundo. 
+
+Importante: Su código no debe imprimir más que el número de ocurrencias, de lo contrario estará midiendo los tiempos de impresión más que los de procesamiento. Si es necesario optimice ambos códigos lo mejor posible.
+
+¿Cuál de los dos códigos resultó ser más eficiente? ¿Cuántas veces resultó más rápido uno que el otro? ¿Qué he aprendido sobre los arreglos de char y la clase String?  

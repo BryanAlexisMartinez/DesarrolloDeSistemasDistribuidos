@@ -1,0 +1,23 @@
+Servidor HTTP el código fuente
+
+https://www.youtube.com/watch?v=yK09BCJFJJM
+
+Comentar su código fuente de acuerdo con la explicación del video.
+
+Ejercicio 1
+
+En el código del servidor si el valor proporcionado en el header personalizado “X-Debug” es true, devuelve el tiempo total de procesamiento. Dado que el tiempo en nanosegundos es difícil de interpretar a simple vista, modifique la impresión para que también se imprima el tiempo en segundos y milisegundos como sigue:
+
+< X-debug-info: La operacion tomo 2266869700 nanosegundos = 2 segundos con 266 milisegundos.
+
+ 
+
+Enviar código y captura de pantalla mostrando la ejecución de su código y realizando lo que se solicita.
+
+ 
+
+Ejercicio 2
+
+Modifique el código del servidor para agregar un nuevo endpoint llamado /searchtoken que incorpora el código del ejercicio 6 elaborado en la clase 9 para la construcción de una cadena de tokens aleatorios y la búsqueda de la cadena IPN. Dicho servicio deberá recibir como dato el número de tokens que va a contener la cadenota y la subcadena de tres letras que se va a buscar (puede ser cualquiera, no solamente “IPN”), mientras que devolverá el número de veces que encontró la subcadena en la cadenota. Incorpore también el header personalizado “X-Debug” que devuelve el tiempo total de procesamiento si es que está activada.
+
+Enviar código y captura de pantalla mostrando la ejecución de su código y realizando lo que se solicita.

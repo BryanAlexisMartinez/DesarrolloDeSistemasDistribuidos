@@ -1,0 +1,84 @@
+En la práctica anterior el cliente realizo consultas secuenciales a tres servidores, mientras que en esta práctica realizaremos consultas concurrentes hacia un solo servidor. Para tener una referencia valida con todos los equipos de cómputo, en esta práctica cada solicitud consiste en la búsqueda de la cadena “IPN” en 1757600 tokens.
+
+Ejercicio 1
+
+Elabore un programa que utiliza un pool de MAX_T threads para ejecutar m tareas donde m se pasa como parámetro en la línea de comandos al programa. Cada tarea consiste en una solicitud al servidor para la búsqueda de la cadena “IPN” en 1757600 tokens. 
+
+Enviar código y captura de pantalla mostrando la ejecución de su código y realizando lo que se solicita.
+
+Ejercicio 2
+
+Ubique el servidor en una computadora distinta al cliente mientras que le pasa al cliente como parámetro 100 como el número de tareas a realizar. Mida el tiempo total de ejecución del cliente con el comando time y llene la siguiente tabla para posteriormente enviarla por teams:
+
+
+
+MAX_T
+Tiempo total
+Solicitudes por minuto atendidas por el servidor
+
+1
+ 
+ 
+
+4
+ 
+ 
+
+8
+ 
+ 
+
+50
+ 
+ 
+
+100
+ 
+ 
+
+
+
+ 
+
+Ejercicio 3
+
+Con el cliente y servidor en distintas computadoras deje MAX_T = 100 en el cliente, así como el parámetro de 100 y modifique el tamaño del pool de threads en el servidor para llenar la siguiente tabla:
+
+
+
+Threads en el servidor
+Tiempo total
+Solicitudes por minuto atendidas por el servidor
+
+1
+ 
+ 
+
+4
+ 
+ 
+
+8
+ 
+ 
+
+
+
+ 
+
+Tome el valor menor del “Tiempo total” en la tabla y responda las siguientes preguntas: 
+
+
+	
+ ¿Cuál es el tiempo promedio que espera un cliente para obtener una respuesta a su solicitud? 
+	
+ ¿Cuál es el tiempo promedio que demora un servidor en realizar los cálculos? 
+	
+ ¿Qué porcentaje de tiempo se pierde en la transmisión de datos entre cliente y servidor para cada solicitud?
+
+
+Envíe la tabla llena y sus respuestas a las preguntas por teams.
+
+Ejercicio 4
+
+Como se muestra en la figura ubique dos clientes, uno en cada computadora y el servidor en la tercera computadora. Configure el servidor con 8 threads como estaba originalmente y ejecute los clientes de manera simultánea con MAX_T = 100 y 100 solicitudes, y posteriormente con MAX_T = 4 y 100 solicitudes. Describa cual fue la diferencia entre ambas ejecuciones, así como sus conclusiones de todos los ejercicios en esta práctica y envíelas por teams.

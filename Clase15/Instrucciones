@@ -1,0 +1,16 @@
+Después de leer el tema sobre Pool Threads en Java disponible en:
+
+https://www.geeksforgeeks.org/thread-pools-java/?ref=gcse
+
+ejecute y entienda el código incorporado para posteriormente modificarlo como se indica a continuación.
+
+Ejercicio 1
+
+
+	
+ Descargue el texto BIBLIA_COMPLETA.txt disponible en la pestaña “archivos” de teams. Retome el programa de la clase 13 que construye y ordena un map de caracteres existentes en un texto, y usando el comando time de UNIX mida el tiempo que tarda en crear y ordenar el map del texto BIBLIA_COMPLETA.txt. Su programa sólo debe imprimir el map ordenado en el formato implícito.
+	
+ Incorpore el código del ejercicio anterior al código disponible en Pool Threads de manera que la construcción y ordenamiento del map se realicen de manera distribuida entre las cinco tareas Runnable. Es decir que al final se imprimirán cinco mapas ordenados, donde cada mapa corresponde a una quinta parte del texto. Su programa debe leer primero en el hilo principal la totalidad del texto y guardarlo en un objeto String. También debe disponer de un método atómico que le permite a cada hilo trabajador leer un bloque correspondiente a una quinta parte del String. Tabule los tiempos de ejecución del programa usando un pool de 1, 2, 3, 4 y 5 threads.
+
+
+Analice los tiempos obtenidos en los incisos a y b y saque una conclusión sobre lo que está sucediendo. Recomendaciones: Mientras se hace el procesamiento abra otra terminal y ejecute el comando htop. También pruebe a substituir el código de cada tarea por uno que haga uso exclusivamente del CPU.
