@@ -1,0 +1,51 @@
+//WebServer
+FrontendSearchRequest tmp = objectMapper.readValue(exchange.getRequestBody().readAllBytes(), FrontendSearchRequest.class); 
+            int n = tmp.getSearchQuery();
+            BigInteger resultado=BigInteger.ONE;
+            System.out.println("El número n que ha sido recibido fue: "+n);
+            int division=n/3;
+            int residuo = n%3;
+            int maxintervlo1 = division;
+            int maxintervlo2 = division*2;
+            int maxintervlo3 = (division*3)+residuo;
+            System.out.println("El resultado de la división fue: "+division);
+            System.out.println("Los intervalos son:");
+            System.out.println("Intervalo 1: 1-"+maxintervlo1);
+            System.out.println("Intervalo 2: "+(maxintervlo1+1)+"-"+maxintervlo2);
+            System.out.println("Intervalo 3: "+(maxintervlo2+1)+"-"+maxintervlo3);
+            List<String> workersAddresses = new ArrayList<String>();
+            workersAddresses.add("http://localhost:8081/task");
+            workersAddresses.add("http://localhost:8082/task");
+            workersAddresses.add("http://localhost:8083/task");
+            List<String> tasks = new ArrayList<String>();
+            tasks.add("1,"+maxintervlo1);
+            tasks.add((maxintervlo1+1)+","+maxintervlo2);
+            tasks.add((maxintervlo2+1)+","+maxintervlo3);
+            Aggregator aggregator = new Aggregator();
+            List<String> results = aggregator.sendTasksToWorkers(workersAddresses,tasks);
+            
+            for(String r : results){
+                System.out.println(r);
+                BigInteger temporal = new BigInteger(r.split(": ")[1].split("\n")[0]);
+                resultado = resultado.multiply(temporal);
+            }
+            String cantidad = resultado.toString();
+            System.out.println("El factorial de "+n+" es: "+resultado);
+            byte[] responseBytes = cantidad.getBytes();
+            sendResponse(responseBytes, exchange);
+
+
+
+//Servidor de procesamiento
+String bodyString = new String(requestBytes);
+        String[] stringNumbers = bodyString.split(",");
+        BigInteger result = BigInteger.ONE;
+        int inicio = Integer.valueOf(stringNumbers[0]);
+        int fin = Integer.valueOf(stringNumbers[1]);
+        System.out.println("Ha sido recibido el rango "+inicio+"-"+fin);
+        for(int i=inicio; i<=fin; i++){
+            BigInteger tmp = BigInteger.valueOf(i);
+            result = result.multiply(tmp);
+        }
+        System.out.println("El resultado de la multiplicación es: "+result);
+        return String.format("El resultado de la multiplicación es: %s\n", result).getBytes();

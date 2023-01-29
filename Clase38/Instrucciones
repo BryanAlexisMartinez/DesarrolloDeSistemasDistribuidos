@@ -1,0 +1,37 @@
+Modifique el código de la clase anterior para mantener la interfaz gráfica web en el navegador y el usuario pueda introducir un numero entero (int) n del cual se desea conocer su factorial n!. Dado que el máximo valor de int es 2147483647, y se podría desear encontrar 2147483647!, será necesario en los servidores de procesamiento manejar el tipo de dato BigInteger para realizar los cálculos necesarios.
+
+El cliente enviará n al servidor web y este distribuirá la tarea de calcular su factorial entre tres servidores de procesamiento como se muestra en la figura. 
+
+ 
+
+El servidor Web colectará las respuestas, si es necesario realizará una operación final y devolverá la respuesta al cliente.
+
+Enviar en el canal de su equipo el código agregado al servidor Web y al servidor procesamiento, así como una captura de pantalla de su escritorio mostrando el navegador web con la salida y las cuatro terminales como en la siguiente imagen:
+[4/1 8:38] Ukranio Coronilla Contreras
+    
+
+Recomendaciones: 
+
+Recuerde que el servidor HTTP original visto en la clase 19, contiene el endpoint /task , el cual multiplica n enteros muy grandes del tipo BigInteger.
+
+Dado que tenemos varios servidores se debería utilizar el cliente asíncrono visto en la clase 24, por lo que tendrá que incorporar al proyecto los archivos WebClient.java y Aggregator.java. Si intenta compilar con Maven le marcará un error similar al siguiente:
+
+[ERROR] /home/ukranio/WebFactorial/my-app/src/main/java/com/mycompany/app/networking/Aggregator.java:[35,13] cannot find symbol
+
+[ERROR]   symbol:   class WebClient
+
+[ERROR]   location: class Aggregator
+
+
+
+Para evitar duplicación de código el compilador espera encontrar a Aggregator.java dentro de la carpeta networking. Una manera de resolverlo es crear en la carpeta que contiene los códigos fuente, la carpeta networking y dentro de esta carpeta colocar los archivos Aggregator.java y WebClient.java. A estos dos archivos sólo se les tiene que agregar al inicio la línea:
+
+package networking;  
+
+mientras que al archivo WebServer.java tendrá que agregarle la línea:
+
+import networking.Aggregator;
+
+
+
+<https://teams.microsoft.com/l/message/19:10mVVoeOssCBuEYVO04A3AL70bq_a7yL2pashVIU-SQ1@thread.tacv2/1672843107192?tenantId=f94bf4d9-8097-4794-adf6-a5466ca28563&amp;groupId=a9d5538a-e6d9-4a47-b71c-614f5173ea31&amp;parentMessageId=1672843059071&amp;teamName=DSD 2022-2 GRUPO 4CM12&amp;channelName=General&amp;createdTime=1672843107192&amp;allowXTenantAccess=false>
