@@ -1,0 +1,17 @@
+Ejecute 3 servidores en tres terminales distintas y haga que el cliente asigne 26 búsquedas que van desde el token “AAA”, hasta el token “ZZZ”. Cada búsqueda debe hacerse sobre una cadenota aleatoria de n tokens, donde n varia desde 1757600 hasta 17576000 tokens. Al inicio el cliente debe imprimir la lista con las 26 tareas que se van a ejecutar: 
+
+AAA – 3429900 
+
+BBB – 2928374 
+
+… 
+
+ZZZ – 84203942 
+
+Cuando uno de los tres servidores termine una tarea, inmediatamente el cliente le debe asignar la siguiente tarea, de manera que todos los servidores se encuentran ocupados todo el tiempo. Cada que reciba la respuesta de un servidor el cliente tendrá que imprimir la tarea junto con el número de apariciones encontradas.  
+
+Al terminar las 26 búsquedas se deberá imprimir la lista de 26 tareas junto con el numero de ocurrencias de cada tarea.  
+
+Importante: Suba cada clase en un archivo separado, y cada archivo de código que suba debe contener al inicio como comentario el número de proyecto, su nombre completo y el grupo al que pertenece, de no hacerlo así se le descontará un punto de la calificación. No suba archivos comprimidos ni ligas a sitios web externos pues no le será tomado en cuenta el proyecto. Asimismo, deberá subir un video breve mostrando como se ejecuta su proyecto y que efectivamente realiza lo que se pide. Para comprobar que los tres núcleos del CPU se utilizan todo el tiempo, debe aparecer en el video el monitor de tareas(LINUX) o el monitor de recursos(Windows). 
+
+Se recomienda utilizar OBS Studio para crear el video y no es necesario que hable en el video. 

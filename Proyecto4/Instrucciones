@@ -1,0 +1,28 @@
+En este proyecto se debe desarrollar una aplicación distribuida en java y comunicación mediante HTTP. 
+
+Suponga que se requiere mantener una base de datos distribuida en tres servidores que se encuentran en la nube. La base de datos debe estar repartida entre los tres servidores para maximizar el espacio disponible en cada instancia. La base de datos va a almacenar CURPs aleatorias tal y como las que se generaron con el código de la clase 10, por lo que tendremos una cuarta instancia generando CURPs continuamente. Para acceder a la base de datos tendremos un cliente en la máquina local que permitirá hacer consultas sobre la base de datos en la nube como se muestra en la siguiente imagen. 
+
+ 
+
+
+Se debe cumplir con los siguientes requisitos: 
+
+El generador de CURPs debe recibir como parámetro el número de CURPs por segundo que va a estar generando de manera continua y sin detenerse en ningún momento. 
+
+Para este caso no requerimos que la base de datos se almacene en disco duro, por lo que los registros deberán estar en la memoria de cada servidor de la base de datos. 
+
+La computadora local debe ofrecer un menú en modo consola para elegir la consulta que se va a realizar sobre la base de datos en un instante dado y que puede ser alguna de las siguientes: 
+
+Cuantas CURPs por segundo se están generando. 
+Cuantos registros hay en total en la base de datos. 
+Cuantos registros hay en cada uno de los tres servidores. 
+Cuantos bytes ocupa la base de datos completa y cuantos bytes se ocupan en cada servidor. 
+Cuantos registros son varones y cuantas mujeres en toda la base de datos en ese momento. 
+Cuantos registros existen para una entidad específica que se desee buscar en ese momento. 
+ 
+
+Sugerencias: 
+
+Probar la aplicación distribuida primero en su computadora y cuando ya esté lista la sube a la nube para hacer las pruebas y grabar el video.  
+
+Importante: No suba a teams un archivo comprimido, suba cada clase en un archivo separado, y cada archivo de código que suba debe contener al inicio como comentario el número de proyecto, su nombre completo y el grupo al que pertenece, de no hacerlo así se le descontará un punto de la calificación. Asimismo, deberá subir un video breve mostrando como se ejecuta su proyecto y que efectivamente realiza todo lo que se pide. Se recomienda utilizar OBS Studio y no es necesario que hable en el video. 
