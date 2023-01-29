@@ -1,2 +1,4 @@
 # DesarrolloDeSistemasDistribuidos
-ESCOM IPN - Maestrp Ukranio
+ESCOM IPN
+Desarrollo de Sistemas Distribuidos
+Maestro Ukranio
