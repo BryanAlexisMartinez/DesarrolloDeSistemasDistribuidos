@@ -1,0 +1,33 @@
+[14/12/2022 8:35] Ukranio Coronilla ContrerasCLASE 34
+    
+
+Hasta ahora hemos utilizado el cliente HTTP en Java dentro de la línea de comandos para comunicarnos con el servidor. En una aplicación web sin embargo el usuario utiliza un navegador como interfaz. En esta práctica vamos a usar el navegador para enviar dos valores como parámetros en la dirección URL, mediante el método GET de HTTP. El primer valor es un numero entero del cual se desea saber si es primo, y el segundo valor indica el número de núcleos que se desean utilizar para el procesamiento. Para nuestro caso puede ser de 1 a 8, por ejemplo:
+
+http://127.0.0.1:8080/isprime?numero=7351733&nucleos=4
+
+El servidor web lo usaremos como un intermediario entre el navegador y nuestro sistema de procesamiento como se muestra en la siguiente imagen:
+
+
+
+
+
+
+
+Después que el servidor web reciba los dos valores, los enviará mediante un mensaje HTTP al servidor de procesamiento multinúcleo quien será encargado de comprobar con un método de fuerza bruta si dicho número n es primo o no utilizando de 1 a los n núcleos disponibles según se le indique. Con método de fuerza bruta nos referimos a realizar las divisiones de n entre todos los posibles menores a n. Cuando el servidor de procesamiento termine enviará sus respuestas al servidor web quien se encargará de indicar si el numero es primo o no al cliente como una respuesta al método GET inicial.
+
+Importante: Por cuestiones de tiempo vamos a limitar la práctica a sólo un núcleo, por lo que no es necesario implementar hilos para utilizar más núcleos en el servidor de procesamiento.
+
+Recomendaciones:
+
+
+	
+Usar el método getRequestURI() de la clase HttpExchange en el servidor web para obtener los parámetros de la URL.
+	
+Crear un objeto WebClient dentro del servidor Web para enviar las solicitudes al servidor de procesamiento.
+	
+Utilizar CompletableFuture.join() al ejecutar el método sendTask. Véase : https://www.educative.io/edpresso/what-is-completablefuturejoin-in-java
+
+
+Enviar en el canal de su equipo el código del servidor Web modificado y una captura de pantalla de su escritorio mostrando las tres ventanas (navegador, terminal del servidor web y terminal del servidor de procesamiento) imprimiendo lo necesario para mostrar que el sistema hace lo que se solicita.
+
+<https://teams.microsoft.com/l/message/19:10mVVoeOssCBuEYVO04A3AL70bq_a7yL2pashVIU-SQ1@thread.tacv2/1671028531401?tenantId=f94bf4d9-8097-4794-adf6-a5466ca28563&amp;groupId=a9d5538a-e6d9-4a47-b71c-614f5173ea31&amp;parentMessageId=1671028531401&amp;teamName=DSD 2022-2 GRUPO 4CM12&amp;channelName=General&amp;createdTime=1671028531401&amp;allowXTenantAccess=false>

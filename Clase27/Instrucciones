@@ -1,0 +1,22 @@
+[28/11/2022 8:34] Ukranio Coronilla ContrerasCLASE 27
+    
+
+En esta práctica vamos a implementar una alternativa para disminuir costos al realizar procesamiento en la nube, mediante la distribución de trabajo entre varios servidores en distintas instancias en lugar de un servidor en una instancia. Se va a realizar la misma cantidad de procesamiento que en la práctica de la clase anterior, es decir, cuatro transacciones HTTP que consisten en la búsqueda de la cadena IPN en 1757600 tokens, pero esta vez se debe distribuir el trabajo entre cuatro servidores instalados en distintas instancias de GCP (servidores con distintas IPs) que utilizan los siguientes procesadores:
+
+Serie N1
+
+Tipo de máquina f1-micro Intel Skylake
+
+Serie E2
+
+Tipo de maquina: e2-micro (2CPU virtuales, 1GB de memoria)
+
+El cliente debe obtener los tiempos de procesamiento de los cuatro servidores e imprimirlos, así como el promedio de los cuatro tiempos.
+
+Al final elabore una tabla comparativa de tiempos de procesamiento y costos usando este método contra el que se utilizó en la clase anterior usando procesadores de cuatro núcleos como el n1-standard-4, n1-highcpu-4 y e2-highcpu-4.
+
+En este caso ¿Cuál de los cinco es el método más conveniente en términos de costo y tiempos de procesamiento?
+
+Enviar al canal del equipo tabla comparativa y conclusiones.
+
+<https://teams.microsoft.com/l/message/19:10mVVoeOssCBuEYVO04A3AL70bq_a7yL2pashVIU-SQ1@thread.tacv2/1669646044437?tenantId=f94bf4d9-8097-4794-adf6-a5466ca28563&amp;groupId=a9d5538a-e6d9-4a47-b71c-614f5173ea31&amp;parentMessageId=1669646044437&amp;teamName=DSD 2022-2 GRUPO 4CM12&amp;channelName=General&amp;createdTime=1669646044437&amp;allowXTenantAccess=false>

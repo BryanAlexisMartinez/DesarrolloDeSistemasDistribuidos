@@ -1,0 +1,11 @@
+Retome el ejercicio de la clase anterior y modifíquelo para que ahora el servidor pueda también responder al cliente con un objeto Java. Para esta clase el cliente deberá enviar un objeto PoligonoIrreg elaborado en la clase 6 e inicializado con 3 vértices, el cual deberá imprimirse antes de enviar, posteriormente el servidor deberá imprimir dicho objeto al recibirlo, agregarle un nuevo vértice, imprimir el objeto modificado y regresarlo hacia el cliente. Luego el cliente imprimirá el objeto recibido por el servidor, le agregará un nuevo vértice y se lo enviará de nuevo al servidor, y así sucesivamente en un ciclo sin fin.
+
+Sugerencias:
+
+Antes de usar el objeto PoligonoIrreg, utilice el objeto Demo de la clase anterior y envíelo también del servidor al cliente.
+
+Al usar composición el objeto Coordenada también tiene que implementar Serializable. 
+
+En este caso el único cambio significativo se da en el archivo WebClient.java al utilizar otro manejador pues dado que se trata de un arreglo de bytes en lugar de una cadena se utiliza HttpResponse.BodyHandlers.ofByteArray() en lugar de HttpResponse.BodyHandlers.ofString().
+
+Enviar sólo los archivos de código que se hayan modificado y una captura de pantalla mostrando la ejecución de su código y realizando lo que se solicita, similar a la siguiente:

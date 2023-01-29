@@ -1,0 +1,117 @@
+Hasta el momento hemos utilizado el protocolo HTTP para enviar las tareas que un cliente solicita del servidor mediante el uso de cadenas, por ejemplo, con una serie de números separados por comas en un formato String. Sin embargo, en muchas aplicaciones distribuidas es necesario transferir datos complejos, como sería el caso de los objetos de Java.
+
+Repase en que consiste la serialización y la deserialización de objetos Java (excepto subtemas SerialVersionUID y serialver) en el siguiente enlace y pruebe el ejemplo 1:
+
+https://www.geeksforgeeks.org/serialization-in-java/
+
+Posteriormente compile la siguiente clase Test.java que hace uso de la clase SerializationUtils.java para serializar y deserializar objetos:
+
+SerializationUtils.java
+
+/*
+
+ *  MIT License
+
+ *
+
+ *  Copyright (c) 2019 Michael Pogrebinsky - Distributed Systems & Cloud Computing with Java
+
+ *
+
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy
+
+ *  of this software and associated documentation files (the "Software"), to deal
+
+ *  in the Software without restriction, including without limitation the rights
+
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+
+ *  copies of the Software, and to permit persons to whom the Software is
+
+ *  furnished to do so, subject to the following conditions:
+
+ *
+
+ *  The above copyright notice and this permission notice shall be included in all
+
+ *  copies or substantial portions of the Software.
+
+ *
+
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+
+ *  SOFTWARE.
+
+ */
+
+ 
+
+import java.io.*;
+
+ 
+
+public class SerializationUtils {
+
+    public static byte[] serialize(Object object) {
+
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+
+        ObjectOutput objectOutput = null;
+
+        try {
+
+            objectOutput = new ObjectOutputStream(byteArrayOutputStream);
+
+            objectOutput.writeObject(object);
+
+            objectOutput.flush();
+
+            return byteArrayOutputStream.toByteArray();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
+
+ 
+
+        return new byte[]{};
+
+    }
+
+ 
+
+    public static Object deserialize(byte[] data) {
+
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(data);
+
+        ObjectInput objectInput = null;
+
+        try {
+
+            objectInput = new ObjectInputStream(byteArrayInputStream);
+
+            return objectInput.readObject();
+
+        } catch (ClassNotFoundException | IOException e) {
+
+            e.printStackTrace();
+
+        }
+
+        return null;
+
+    }
+
+}

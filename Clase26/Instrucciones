@@ -1,0 +1,78 @@
+[24/11/2022 8:34] Ukranio Coronilla ContrerasCLASE 26
+    
+
+Importante: Leer por completo todo el ejercicio antes de comenzar a programar. Cualquier duda favor de consultarla con el profesor. Este trabajo es en equipo.
+
+
+
+Ejercicio 1
+
+Suponga que el servicio que brinda un hosting dedicado es el de generar 1757600 tokens aleatorios y hacer búsquedas de tokens de tres letras en dicha cadena. Dicho servicio lleva tiempo funcionando y se sabe por estadísticas que en promedio se están procesando cuatro solicitudes la mayor parte del tiempo. Se desea migrar el servicio a la nube y nos plantean dos importantes preguntas: 
+
+1.- ¿Cuál CPU en Google Cloud Platform debemos elegir de entre los candidatos para tener la mejor relación costo-desempeño? Es decir que se desea pagar lo menos posible y que el servidor procese las consultas en el menor tiempo posible.
+
+2.- ¿Cuál CPU debemos elegir si se desean los mínimos tiempos de respuesta sin importar el costo?
+
+Para contestar estas preguntas será necesario elaborar y entregar una tabla comparativa con las distintas configuraciones de las CPU disponibles en Google Cloud, explicando cuales fueron las elegidas y porqué.
+
+Debido a que en principio se buscan los menores costos y considerando que cada proceso requiere un núcleo de CPU para ejecutarse se han elegido los siguientes candidatos:
+
+Serie N1
+
+Tipo de máquina f1-micro Intel Skylake
+
+Tipo de maquina: n1-standard-1 (1CPU virtuales, 3.75GB de memoria)
+
+Tipo de maquina: n1-standard-2 (2CPU virtuales, 7.5GB de memoria)
+
+Tipo de maquina: n1-standard-4 (4CPU virtuales, 15GB de memoria)
+
+Tipo de maquina: n1-highcpu-2 (2CPU virtuales, 1.8GB de memoria)
+
+Tipo de maquina: n1-highcpu-4 (4CPU virtuales, 3.6GB de memoria)
+
+Serie E2
+
+Tipo de maquina: e2-micro (2CPU virtuales, 1GB de memoria)
+
+Tipo de maquina: e2-highcpu-2 (2CPU virtuales, 2GB de memoria)
+
+Tipo de maquina: e2-highcpu-4 (4CPU virtuales, 4GB de memoria)
+
+Para probar las distintas configuraciones usaremos el código del cliente asíncrono realizando 4 solicitudes al mismo servidor. No olvide dejar al servidor con el pool de 8 threads como se encontraba originalmente. Se recomienda ejecutar varias veces los clientes hasta que el tiempo de respuesta tienda a estabilizarse.
+
+Para ahorrar tiempo en lugar de instalar en cada instancia el jdk, instalar el jre sin soporte de mouse, teclado y display, lo cual es más conveniente para servidores mediante las siguientes instrucciones:
+
+sudo apt-get update
+
+sudo apt-get install openjdk-17-jre-headless
+
+
+
+Así sólo es necesario subir el archivo class y ejecutarlo con el comando java. En la ventana ssh se dispone de un botón para subir archivos, pero existen otros métodos disponibles en Internet.
+
+Sugerencia:
+
+En este caso no nos interesa el tiempo que se lleva en la transmisión del mensaje, sino el tiempo que el servidor realiza los cálculos. Para obtener el tiempo ocupado para procesar la consulta se requiere enviar el header 
+
+X-Debug:true lo cual se logra incluyendo los siguientes cambios resaltados en amarillo dentro del código de WebClient.java:
+
+public CompletableFuture<String> sendTask(String url, byte[] requestPayload) {​​​​​​​​
+
+        HttpRequest request = HttpRequest.newBuilder()  
+
+                .POST(HttpRequest.BodyPublishers.ofByteArray(requestPayload)) 
+
+                .uri(URI.create(url))
+
+                .header("X-debug","true")
+
+                .build();
+
+return client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+
+            .thenApply(respuesta -> {​​​​​​​​ return respuesta.headers().toString() + respuesta.body().toString();}​​​​​​​​);
+
+
+
+<https://teams.microsoft.com/l/message/19:10mVVoeOssCBuEYVO04A3AL70bq_a7yL2pashVIU-SQ1@thread.tacv2/1669300455851?tenantId=f94bf4d9-8097-4794-adf6-a5466ca28563&amp;groupId=a9d5538a-e6d9-4a47-b71c-614f5173ea31&amp;parentMessageId=1669300455851&amp;teamName=DSD 2022-2 GRUPO 4CM12&amp;channelName=General&amp;createdTime=1669300455851&amp;allowXTenantAccess=false>

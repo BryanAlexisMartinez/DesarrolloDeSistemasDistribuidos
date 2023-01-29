@@ -1,0 +1,44 @@
+Visualizar el video:
+
+Serialización y deserialización entre objetos Java y JSON
+
+https://youtu.be/mUZlA-epit8
+
+Los recursos que aparecen en el video son los siguientes:
+
+Maven in 5 Minutes
+
+https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
+
+How can I create an executable JAR with dependencies using Maven?
+
+https://stackoverflow.com/questions/574594/how-can-i-create-an-executable-runnable-jar-with-dependencies-using-maven
+
+Siguiendo las indicaciones del video Instale Maven en su computadora y cree el archivo JAR de ejemplo con las dependencias tal y como se indica.
+
+Posteriormente ingrese a la siguiente página:
+
+Introduction to Jackson ObjectMapper
+
+https://examples.javacodegeeks.com/introduction-to-jackson-objectmapper/
+
+y descargue el código fuente que se encuentra al final de esta.
+
+Usando la información contenida en el video compile el código fuente descargado y asegúrese de entender todos los ejemplos en el código leyendo la explicación de cada uno expuesta en la página web y hacer un breve resumen de estos. 
+
+Enviar en el canal de su equipo el archivo pom.xml que funciona para el código descargado en Introduction to Jackson ObjectMapper. También envíe una captura de pantalla de su terminal mostrando la ejecución completa del código descargado.
+
+Recomendaciones:
+El comando tree me permite ver el árbol de directorios a partir de la carpeta donde me encuentro.
+
+Al descomprimir el archivo descargado se recomienda borrar los archivos .project y .classpath generados por el IDE del autor.
+
+Dado que el código descargado de la página web no está en su versión reciente compare el pom.xml con el que ya funciona en el ejemplo de Maven para poder depurarlo.
+
+Como se indica al inicio de la página web la versión de Jackson que usa es la 2.11.0, la cual puede ver en el repositorio de Maven que tiene vulnerabilidades y no se recomienda su uso. Por seguridad, escoja siempre versiones sin vulnerabilidades revisando los repositorios correspondientes de Maven. 
+
+Pruebe no correr el jar con dependencias generado dentro de la carpeta target, sino desde el home del proyecto:
+
+java -jar ./target/objectmapper-examples-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+
+Al ejecutarlo marca una excepción, debido que no encuentra el archivo target/random.json, el cual efectivamente no existe. El archivo json que si se encuentra es target/country.json como puede comprobar, por lo que debe hacer la modificación en ObjectMapperUtils.java.

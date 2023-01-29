@@ -1,0 +1,8 @@
+com/adee/samples/objectmapper/run/ObjectMapperUtils.class
+com/adee/samples/objectmapper/run/ObjectMapperUtils$1.class
+com/adee/samples/objectmapper/model/Country.class
+com/adee/samples/objectmapper/model/Info.class
+com/adee/samples/objectmapper/run/ObjectMapperUtils$1CustomCountryDeserializer.class
+com/adee/samples/objectmapper/run/ObjectMapperUtils$1CustomCountrySerializer.class
+com/adee/samples/objectmapper/run/ObjectMapperUtils$2.class
+com/adee/samples/objectmapper/run/Main.class

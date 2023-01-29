@@ -1,0 +1,61 @@
+Visualizar el video:
+
+Cliente HTTP en Java
+
+https://youtu.be/G0e1dpgCjxM
+
+Verificar el correcto funcionamiento del código y comentarlo de acuerdo con la explicación del video.
+
+En esta clase acabamos de revisar la codificación de un cliente HTTP asíncrono(https://es.wikipedia.org/wiki/Comunicaci%C3%B3n_asincr%C3%B3nica) que permite acceder a varios endpoints de manera concurrente, lo cual brinda mayores posibilidades y mejor desempeño que el cliente síncrono visto en la clase 22.
+
+Una herramienta fundamental para implementar la comunicación asíncrona en Java son los Future. Un Future es un objeto que en algún momento futuro (no se sabe cuándo) va a contener la respuesta devuelta por un método. En Java 8 se mejoraron los Future dando pie a los CompletableFuture que se incorpora en WebClient.java para obtener en algún momento futuro la respuesta proveniente del servidor. Observe en Aggregator.java que, aunque se envían todas las solicitudes en un momento dado mediante el método sendTask, este devuelve objetos CompletableFuture que estarán disponibles en un futuro, aunque se desconoce cuándo.
+
+Podemos evaluar continuamente todos los futuros para saber si alguno ya se ha concretado mediante el método isDone(), el cual regresa el valor true si la tarea ha sido completada (véase: https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html )
+
+Para ilustrar lo anterior incruste el siguiente código después de enviar todas las tareas con el método sendTAsk en Aggregator. java :
+
+        // Evalúa continuamente si uno de los servidores ha terminado.
+
+        boolean bandera = true;
+
+        while(bandera){
+
+            for(int j = 0; j < 2; j++){
+
+                System.out.println("futures["+j+"].isDone() = " + futures[j].isDone());
+
+                if (true == futures[j].isDone())
+
+                    bandera = false;
+
+            }
+
+        }
+
+ 
+
+Ejercicio 1
+
+Modifique Application.java para que el cliente envíe tres tareas de búsqueda distintas, hacia dos servidores. También modifique Aggregator.java de modo que al primer servidor que termine se le asigne la tercera tarea. Al finalizar el cliente tendrá que imprimir qué tareas se asignaron a los primeros dos servidores, cual es la tercera tarea y a qué servidor se asignó, y por último para cada una de las tareas cual fue el numero de apariciones encontradas. Un ejemplo de salida sería:
+
+En el método sendTasksToWorkers se asignaron las siguientes tareas a los servidores:
+
+Servidor http://localhost:8080/searchipn -> Tarea: 175760,IPN
+
+Servidor http://localhost:8081/searchipn -> Tarea: 1757600,SAL
+
+ 
+
+El primer servidor en terminar fue: http://localhost:8080/searchipn. Y se le asigna la tarea: 700000,MAS
+
+ 
+
+Para la tarea 175760,IPN El numero de apariciones es 7
+
+Para la tarea 1757600,SAL El numero de apariciones es 96
+
+Para la tarea 700000,MAS El numero de apariciones es 38
+
+ 
+
+Enviar código y captura de pantalla mostrando la ejecución de su código y realizando lo que se solicita.
